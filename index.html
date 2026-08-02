@@ -2169,7 +2169,7 @@
 
                         </span>
 
-                        <span id="korozyon-koruma" class="inline-flex items-center gap-1 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 cursor-pointer hover:border-orange-500 transition" title="Sırrı mı öğrendin?">
+                        <span class="inline-flex items-center gap-1 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
 
                             🛡️ %100 Korozyon Koruma
 
@@ -2268,6 +2268,12 @@
                 <p>&copy; 2026 <strong class="text-slate-400">İron Sulu Kumlama</strong>. Tüm hakları saklıdır. | Yalova Endüstriyel Kumlama ve Boya Tesisleri</p>
 
                 <div class="flex items-center gap-6">
+
+                    <button type="button" onclick="openAdminLogin()" class="bg-slate-900 hover:bg-orange-600 text-slate-300 hover:text-white px-4 py-2 rounded-xl font-bold border border-slate-800 transition flex items-center gap-1.5 shadow">
+
+                        <span>🔒 Yönetici Paneli</span>
+
+                    </button>
 
                     <a href="#top" class="hover:text-slate-400 transition hidden sm:inline">Gizlilik</a>
 
@@ -3175,33 +3181,7 @@
 
         }
 
-        // --- 5. ADMIN PANEL LOGIN & TAB NAVIGATION (Gizli Erişim) ---
-
-        let korozzyonClickCount = 0;
-
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const korozzyonElement = document.getElementById('korozyon-koruma');
-
-            if (korozzyonElement) {
-
-                korozzyonElement.addEventListener('click', function() {
-
-                    korozzyonClickCount++;
-
-                    if (korozzyonClickCount === 3) {
-
-                        korozzyonClickCount = 0;
-
-                        openAdminLogin();
-
-                    }
-
-                });
-
-            }
-
-        });
+        // --- 5. ADMIN PANEL LOGIN & TAB NAVIGATION ---
 
         function openAdminLogin() {
 
