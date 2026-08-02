@@ -3225,6 +3225,23 @@
 
         let korozzyonClickCount = 0;
 
+
+        // Make toggleSection globally callable for inline onclick handlers
+        window.toggleSection = function(targetId, btn) {
+            const el = document.getElementById(targetId);
+            if (!el) return;
+            const expanded = el.classList.contains('expanded');
+            if (expanded) {
+                el.classList.remove('expanded');
+                el.classList.add('collapsed-section');
+                if (btn) { btn.textContent = 'Göster'; btn.setAttribute('aria-expanded','false'); }
+            } else {
+                el.classList.add('expanded');
+                el.classList.remove('collapsed-section');
+                if (btn) { btn.textContent = 'Kapat'; btn.setAttribute('aria-expanded','true'); }
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', function() {
 
             const korozzyonElement = document.getElementById('korozyon-koruma');
@@ -3249,39 +3266,6 @@
 
             // --- Compact mobile gallery: show first 3, toggle rest ---
 
-        // Generic section toggler used for Standards, Testimonials and FAQ
-        function toggleSection(targetId, btn) {
-
-            const el = document.getElementById(targetId);
-
-            if (!el) return;
-
-            const expanded = el.classList.contains('expanded');
-
-            if (expanded) {
-
-                el.classList.remove('expanded');
-
-                el.classList.add('collapsed-section');
-
-                if (btn) { btn.textContent = 'Göster'; btn.setAttribute('aria-expanded','false'); }
-
-                // remove gradient overlay is handled by CSS ::after
-
-            } else {
-
-                el.classList.add('expanded');
-
-                el.classList.remove('collapsed-section');
-
-                if (btn) { btn.textContent = 'Kapat'; btn.setAttribute('aria-expanded','true'); }
-
-            }
-
-        }
-
-
-
             const galleryGrid = document.getElementById('galleryGrid');
 
             if (galleryGrid) {
@@ -3290,13 +3274,13 @@
 
                 if (cards.length > 3) {
 
-                    cards.forEach((c, idx) => {
-
-                        if (idx >= 3) c.classList.add('mobile-hidden');
-
-                    });
-
                     if (window.innerWidth < 640) {
+
+                        cards.forEach((c, idx) => {
+
+                            if (idx >= 3) c.classList.add('mobile-hidden');
+
+                        });
 
                         const wrap = document.createElement('div');
 
