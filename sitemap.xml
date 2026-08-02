@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
+    
+    <!-- Homepage -->
+    <url>
+        <loc>https://ironkumlama.com/</loc>
+        <lastmod>2026-08-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/logo-v2.png</image:loc>
+            <image:title>İron Sulu Kumlama Logo</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/hero-bg.jpg</image:loc>
+            <image:title>Hero Background</image:title>
+        </image:image>
+        <mobile:mobile/>
+    </url>
+
+    <!-- Before/After Section -->
+    <url>
+        <loc>https://ironkumlama.com/#karsilastirma</loc>
+        <lastmod>2026-08-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/before-after/before.jpg</image:loc>
+            <image:title>Before - Kumlanmış Yüzey</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/before-after/after.jpg</image:loc>
+            <image:title>After - Tertemiz &amp; Koruyucu Boyalı</image:title>
+        </image:image>
+    </url>
+
+    <!-- Services Section -->
+    <url>
+        <loc>https://ironkumlama.com/#hizmetler</loc>
+        <lastmod>2026-08-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- About Section -->
+    <url>
+        <loc>https://ironkumlama.com/#hakkimizda</loc>
+        <lastmod>2026-08-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Gallery Section -->
+    <url>
+        <loc>https://ironkumlama.com/#galeri</loc>
+        <lastmod>2026-08-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/1.jpg</image:loc>
+            <image:title>Tır Dorsesi Şasi Kumlama</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/2.jpg</image:loc>
+            <image:title>Paslanmaz Gıda Tankı</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/3.jpg</image:loc>
+            <image:title>İş Makinası Kovası</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/4.jpg</image:loc>
+            <image:title>Klasik Araç Şasi Restorasyon</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/5.jpg</image:loc>
+            <image:title>Akaryakıt Tankeri Boyama</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/6.jpg</image:loc>
+            <image:title>Kimyasal Reaktör Boruları</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/7.jpg</image:loc>
+            <image:title>Fabrika Çelik Konstrüksiyon</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/8.jpg</image:loc>
+            <image:title>Kamyon Kasası Yenileme</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/9.jpg</image:loc>
+            <image:title>Tekne ve Yat Karina Kumlama</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/10.jpg</image:loc>
+            <image:title>Mobil Platform ve Vinç</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/11.jpg</image:loc>
+            <image:title>Paslanmaz Korkuluk Aksam</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://ironkumlama.com/images/galeri/12.jpg</image:loc>
+            <image:title>Lowbed Konteyner Taşıyıcı</image:title>
+        </image:image>
+    </url>
+
+    <!-- Reviews Section -->
+    <url>
+        <loc>https://ironkumlama.com/#yorumlar</loc>
+        <lastmod>2026-08-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- FAQ Section -->
+    <url>
+        <loc>https://ironkumlama.com/#sss</loc>
+        <lastmod>2026-08-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Contact Section -->
+    <url>
+        <loc>https://ironkumlama.com/#iletisim</loc>
+        <lastmod>2026-08-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>
