@@ -62,6 +62,22 @@
         @media (min-width: 640px) {
             .mobile-hidden { display: block !important; }
         }
+
+        /* Collapsible section helper (smooth) */
+        .collapsed-section { max-height: 260px; overflow: hidden; position: relative; transition: max-height 360ms ease; }
+        .collapsed-section.expanded { max-height: 2000px; }
+        .collapsed-section::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: linear-gradient(transparent, rgba(248,250,252,0.95)); pointer-events: none; }
+
+        .section-toggle { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#0f172a; color:#fff; font-weight:700; font-size:13px; border:0; cursor:pointer; }
+        .section-toggle.small { padding:6px 8px; font-size:12px; }
+
+        /* Load-dots animation for compact 'Load more' pill */
+        .load-dots { display:inline-flex; gap:4px; align-items:center; }
+        .load-dots .dot { width:6px; height:6px; background:#fff; border-radius:50%; opacity:0.25; transform: translateY(0); display:inline-block; }
+        .load-dots .dot.animate-dot { animation: dotPulse 900ms infinite ease-in-out; }
+        .load-dots .dot.delay-75 { animation-delay: 120ms; }
+        .load-dots .dot.delay-150 { animation-delay: 240ms; }
+        @keyframes dotPulse { 0% { opacity:0.25; transform: translateY(0); } 50% { opacity:1; transform: translateY(-4px); } 100% { opacity:0.25; transform: translateY(0); } }
     </style>
 
     
@@ -1325,11 +1341,17 @@
 
                 <span class="text-orange-500 font-bold text-xs sm:text-sm uppercase tracking-widest">Neden İron Sulu Kumlama?</span>
 
-                <h2 id="hakkimizda-heading" class="text-3xl sm:text-4xl lg:text-5xl font-heading text-slate-900 mt-3 mb-4">
+                <div class="flex items-center justify-center gap-3">
 
-                    Sektörde <span class="text-orange-500">Fark Yaratan</span> Standartlar
+                    <h2 id="hakkimizda-heading" class="text-3xl sm:text-4xl lg:text-5xl font-heading text-slate-900 mt-3 mb-4">
 
-                </h2>
+                        Sektörde <span class="text-orange-500">Fark Yaratan</span> Standartlar
+
+                    </h2>
+
+                    <button class="section-toggle small" onclick="toggleSection('standardsContent', this)" aria-expanded="false">Göster</button>
+
+                </div>
 
                 <p class="text-slate-600 text-sm sm:text-base">
 
@@ -1341,7 +1363,7 @@
 
             
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="standardsContent" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 collapsed-section">
 
                 <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition">
 
@@ -1743,17 +1765,23 @@
 
                 </div>
 
+            <div class="flex items-center justify-center gap-3">
+
                 <h2 id="yorumlar-heading" class="text-3xl sm:text-4xl lg:text-5xl font-heading text-slate-900 mb-4">
 
                     Müşterilerimiz <span class="text-orange-500">Ne Diyor?</span>
 
                 </h2>
 
-                <p class="text-slate-600 text-sm sm:text-base">
+                <button class="section-toggle small" onclick="toggleSection('yorumlarContent', this)" aria-expanded="false">Göster</button>
 
-                    Marmara Bölgesi'ndeki sanayici ve filo yöneticilerimizin İron Sulu Kumlama hakkındaki gerçek değerlendirmeleri. Siz de aşağıdan yorum ekleyebilirsiniz.
+            </div>
 
-                </p>
+            <p class="text-slate-600 text-sm sm:text-base">
+
+                Marmara Bölgesi'ndeki sanayici ve filo yöneticilerimizin İron Sulu Kumlama hakkındaki gerçek değerlendirmeleri. Siz de aşağıdan yorum ekleyebilirsiniz.
+
+            </p>
 
             </div>
 
@@ -1761,7 +1789,9 @@
 
             <!-- Dynamic Comments Grid -->
 
-            <div id="commentsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div id="yorumlarContent" class="collapsed-section">
+
+                <div id="commentsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
 
                 <!-- Comments rendered via JS -->
 
@@ -1855,17 +1885,23 @@
 
                 <span class="text-orange-500 font-bold text-xs sm:text-sm uppercase tracking-widest">Merak Ettikleriniz</span>
 
+            <div class="flex items-center justify-center gap-3">
+
                 <h2 id="sss-heading" class="text-3xl sm:text-4xl lg:text-5xl font-heading text-slate-900 mt-3 mb-4">
 
                     Sık Sorulan <span class="text-orange-500">Sorular</span>
 
                 </h2>
 
-                <p class="text-slate-600 text-sm sm:text-base">
+                <button class="section-toggle small" onclick="toggleSection('faqContent', this)" aria-expanded="false">Göster</button>
 
-                    Endüstriyel kumlama, yüzey hazırlığı ve boyama süreçleriyle ilgili en çok sorulan teknik ve ticari soruların yanıtları.
+            </div>
 
-                </p>
+            <p class="text-slate-600 text-sm sm:text-base">
+
+                Endüstriyel kumlama, yüzey hazırlığı ve boyama süreçleriyle ilgili en çok sorulan teknik ve ticari soruların yanıtları.
+
+            </p>
 
             </div>
 
@@ -2589,7 +2625,7 @@
 
                         <p class="text-xs text-slate-400">Burada yaptığınız değişiklikler "Kaydet" butonuna bastığınız anda web sitesindeki tüm butonlarda, arama linklerinde `tel:`) ve WhatsApp butonlarında anında güncellenir.</p>
 
-                        <div class="space-y-4">
+                        <div id="faqContent" class="space-y-4 collapsed-section">
 
                             <div>
 
@@ -3213,6 +3249,39 @@
 
             // --- Compact mobile gallery: show first 3, toggle rest ---
 
+        // Generic section toggler used for Standards, Testimonials and FAQ
+        function toggleSection(targetId, btn) {
+
+            const el = document.getElementById(targetId);
+
+            if (!el) return;
+
+            const expanded = el.classList.contains('expanded');
+
+            if (expanded) {
+
+                el.classList.remove('expanded');
+
+                el.classList.add('collapsed-section');
+
+                if (btn) { btn.textContent = 'Göster'; btn.setAttribute('aria-expanded','false'); }
+
+                // remove gradient overlay is handled by CSS ::after
+
+            } else {
+
+                el.classList.add('expanded');
+
+                el.classList.remove('collapsed-section');
+
+                if (btn) { btn.textContent = 'Kapat'; btn.setAttribute('aria-expanded','true'); }
+
+            }
+
+        }
+
+
+
             const galleryGrid = document.getElementById('galleryGrid');
 
             if (galleryGrid) {
@@ -3233,7 +3302,7 @@
 
                         wrap.className = 'flex justify-center mt-6 sm:hidden';
 
-                        wrap.innerHTML = '<button id="showMoreGalleryBtn" class="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold">Daha Fazla Göster</button>';
+                        wrap.innerHTML = '<button id="showMoreGalleryBtn" class="section-toggle small" aria-expanded="false"> <span class="load-dots"> <span class="dot animate-dot"></span><span class="dot animate-dot delay-75"></span><span class="dot animate-dot delay-150"></span> </span> <span class="ml-1">Daha Fazla</span> </button>';
 
                         galleryGrid.parentNode.insertBefore(wrap, galleryGrid.nextSibling);
 
@@ -3247,7 +3316,8 @@
 
                                 cards.forEach((c, idx) => { if (idx >= 3) c.classList.remove('mobile-hidden'); });
 
-                                btn.textContent = 'Daha Az Göster';
+                                btn.setAttribute('aria-expanded','true');
+                                btn.querySelector('span.ml-1').textContent = 'Daha Az';
 
                                 setTimeout(()=> cards[3].scrollIntoView({behavior:'smooth', block:'center'}),100);
 
@@ -3255,7 +3325,8 @@
 
                                 cards.forEach((c, idx) => { if (idx >= 3) c.classList.add('mobile-hidden'); });
 
-                                btn.textContent = 'Daha Fazla Göster';
+                                btn.setAttribute('aria-expanded','false');
+                                btn.querySelector('span.ml-1').textContent = 'Daha Fazla';
 
                                 window.scrollTo({top: document.getElementById('galeri').offsetTop - 20, behavior:'smooth'});
 
