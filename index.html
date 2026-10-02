@@ -20,6 +20,128 @@
         document.addEventListener('visibilitychange', updateTabTitle);
         updateTabTitle();
     </script>
+    <style>
+        .mobile-section-details > summary {
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+        }
+        .mobile-section-details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .mobile-section-toggle-icon {
+            align-items: center;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 9999px;
+            color: #f97316;
+            display: flex;
+            font-size: 1.5rem;
+            font-weight: 700;
+            height: 2.5rem;
+            justify-content: center;
+            line-height: 1;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.5rem;
+        }
+        .mobile-section-toggle-minus {
+            display: none;
+        }
+        .mobile-section-details[open] .mobile-section-toggle-plus {
+            display: none;
+        }
+        .mobile-section-details[open] .mobile-section-toggle-minus {
+            display: inline;
+        }
+        @media (max-width: 639px) {
+            .mobile-collapsible-section {
+                padding-bottom: 2.5rem;
+                padding-top: 2.5rem;
+            }
+            .mobile-section-details > summary {
+                margin-bottom: 0 !important;
+                padding-right: 3rem;
+            }
+            .mobile-section-details > summary > div {
+                margin-bottom: 0 !important;
+            }
+            .mobile-section-details > summary h2 {
+                font-size: 1.5rem;
+                line-height: 2rem;
+                margin-bottom: 0;
+                margin-top: 0.5rem;
+            }
+            .mobile-section-details:not([open]) > summary p {
+                display: none;
+            }
+            .mobile-section-details[open] > summary {
+                margin-bottom: 1.5rem !important;
+            }
+            .mobile-section-toggle-icon {
+                right: 0;
+            }
+        }
+        @media (min-width: 640px) {
+            .mobile-section-details > summary {
+                cursor: default;
+                pointer-events: none;
+            }
+            .mobile-section-toggle-icon {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const mobileViewport = window.matchMedia('(max-width: 639px)');
+            const sections = ['hizmetler', 'yorumlar', 'sss'];
+            const sectionDetails = [];
+
+            sections.forEach((id) => {
+                const section = document.getElementById(id);
+                const container = section && section.firstElementChild;
+                const heading = container && container.firstElementChild;
+                if (!container || !heading) return;
+
+                section.classList.add('mobile-collapsible-section');
+                const details = document.createElement('details');
+                details.className = 'mobile-section-details';
+                details.open = !mobileViewport.matches;
+
+                const summary = document.createElement('summary');
+                summary.className = 'mobile-section-summary';
+                summary.addEventListener('click', (event) => {
+                    if (!mobileViewport.matches) event.preventDefault();
+                });
+
+                container.replaceChild(details, heading);
+                summary.appendChild(heading);
+
+                const toggleIcon = document.createElement('span');
+                toggleIcon.className = 'mobile-section-toggle-icon';
+                toggleIcon.setAttribute('aria-hidden', 'true');
+                toggleIcon.innerHTML = '<span class="mobile-section-toggle-plus">+</span><span class="mobile-section-toggle-minus">−</span>';
+                summary.appendChild(toggleIcon);
+
+                const content = document.createElement('div');
+                content.className = 'mobile-section-content';
+                while (container.children.length > 1) {
+                    content.appendChild(container.children[1]);
+                }
+                details.append(summary, content);
+                sectionDetails.push(details);
+            });
+
+            mobileViewport.addEventListener('change', () => {
+                sectionDetails.forEach((details) => {
+                    details.open = !mobileViewport.matches;
+                });
+            });
+        });
+    </script>
 
     <meta name="description" content="Yalova Çiftlikköy’de argon (TIG) ve gaz altı (MIG/MAG) kaynak hizmeti. Endüstriyel kumlama, yüzey hazırlığı ve boya çözümleri için İron Sulu Kumlama.">
 
