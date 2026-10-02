@@ -12,7 +12,14 @@
 
     <!-- ============ SEO META ETİKETLERİ ============ -->
 
-    <title>Yalova Argon ve Gaz Altı Kaynak | İron Sulu Kumlama</title>
+    <title>İron Sulu Kumlama</title>
+    <script>
+        const updateTabTitle = () => {
+            document.title = document.hidden ? 'Kumlama Hizmeti' : 'İron Sulu Kumlama';
+        };
+        document.addEventListener('visibilitychange', updateTabTitle);
+        updateTabTitle();
+    </script>
 
     <meta name="description" content="Yalova Çiftlikköy’de argon (TIG) ve gaz altı (MIG/MAG) kaynak hizmeti. Endüstriyel kumlama, yüzey hazırlığı ve boya çözümleri için İron Sulu Kumlama.">
 
