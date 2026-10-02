@@ -92,15 +92,27 @@
             .mobile-section-toggle-icon {
                 display: none;
             }
+            .mobile-section-details.desktop-section-toggle > summary {
+                cursor: pointer;
+                pointer-events: auto;
+            }
+            .mobile-section-details.desktop-section-toggle .mobile-section-toggle-icon {
+                display: flex;
+            }
         }
     </style>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const mobileViewport = window.matchMedia('(max-width: 639px)');
-            const sections = ['hizmetler', 'yorumlar', 'sss'];
+            const sections = [
+                { id: 'hizmetler', collapseOnDesktop: false },
+                { id: 'yorumlar', collapseOnDesktop: false },
+                { id: 'sss', collapseOnDesktop: false },
+                { id: 'galeri', collapseOnDesktop: true }
+            ];
             const sectionDetails = [];
 
-            sections.forEach((id) => {
+            sections.forEach(({ id, collapseOnDesktop }) => {
                 const section = document.getElementById(id);
                 const container = section && section.firstElementChild;
                 const heading = container && container.firstElementChild;
@@ -108,13 +120,15 @@
 
                 section.classList.add('mobile-collapsible-section');
                 const details = document.createElement('details');
-                details.className = 'mobile-section-details';
-                details.open = !mobileViewport.matches;
+                details.className = collapseOnDesktop
+                    ? 'mobile-section-details desktop-section-toggle'
+                    : 'mobile-section-details';
+                details.open = collapseOnDesktop ? false : !mobileViewport.matches;
 
                 const summary = document.createElement('summary');
                 summary.className = 'mobile-section-summary';
                 summary.addEventListener('click', (event) => {
-                    if (!mobileViewport.matches) event.preventDefault();
+                    if (!mobileViewport.matches && !collapseOnDesktop) event.preventDefault();
                 });
 
                 container.replaceChild(details, heading);
@@ -132,12 +146,12 @@
                     content.appendChild(container.children[1]);
                 }
                 details.append(summary, content);
-                sectionDetails.push(details);
+                sectionDetails.push({ details, collapseOnDesktop });
             });
 
             mobileViewport.addEventListener('change', () => {
-                sectionDetails.forEach((details) => {
-                    details.open = !mobileViewport.matches;
+                sectionDetails.forEach(({ details, collapseOnDesktop }) => {
+                    if (!collapseOnDesktop) details.open = !mobileViewport.matches;
                 });
             });
         });
